@@ -33,6 +33,8 @@ class Node(DpgNodeABC):
         tag_node_name = str(node_id) + ':' + self.node_tag
         tag_node_input01_name = tag_node_name + ':' + self.TYPE_IMAGE + ':Input01'
         tag_node_input01_value_name = tag_node_name + ':' + self.TYPE_IMAGE + ':Input01Value'
+        tag_node_output01_name = f"{tag_node_name}:{self.TYPE_IMAGE}:Output01"
+        tag_node_output01_value_name = f"{tag_node_name}:{self.TYPE_IMAGE}:Output01Value"
 
         # OpenCV向け設定
         self._opencv_setting_dict = opencv_setting_dict
@@ -70,6 +72,12 @@ class Node(DpgNodeABC):
                     attribute_type=dpg.mvNode_Attr_Input,
             ):
                 dpg.add_image(tag_node_input01_value_name)
+
+            with dpg.node_attribute(
+                    tag=tag_node_output01_name,
+                    attribute_type=dpg.mvNode_Attr_Output,
+            ):
+                dpg.add_image(tag_node_output01_value_name)
 
         return tag_node_name
 

@@ -8,7 +8,7 @@
     "process_width": 240,
     "process_height": 135,
     "result_width": 480,
-    "result_height": 270,
+    "result_height": 600,
     "video_writer_width": 1280,
     "video_writer_height": 720,
     "video_writer_fps": 30,

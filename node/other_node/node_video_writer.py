@@ -14,6 +14,10 @@ from node.node_abc import DpgNodeABC
 from node_editor.util import convert_cv_to_dpg
 
 
+def slow_motion_interpolation(prev_frame, next_frame, alpha):
+    """ Génère une frame intermédiaire fluide entre 2 images """
+    return cv2.addWeighted(prev_frame, 1 - alpha, next_frame, alpha, 0)
+
 class Node(DpgNodeABC):
     _ver = '0.0.1'
 
@@ -144,7 +148,7 @@ class Node(DpgNodeABC):
                                         4.0, (0, 0, 255),
                                         thickness=10)
 
-            # 画面反映
+
             texture = convert_cv_to_dpg(
                 rec_frame,
                 small_window_w,
@@ -192,6 +196,12 @@ class Node(DpgNodeABC):
 
     def set_setting_dict(self, node_id, setting_dict):
         pass
+
+    
+
+
+
+
 
     def _recording_button(self, sender, data, user_data):
         tag_node_name = user_data

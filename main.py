@@ -156,8 +156,7 @@ def main():
         height=editor_height,
     )
 
-    # デフォルトフォント変更
-    # このファイルのパスを取得
+
     current_path = os.path.dirname(os.path.abspath(__file__))
     with dpg.font_registry():
         with dpg.font(
@@ -168,16 +167,20 @@ def main():
             dpg.add_font_range_hint(dpg.mvFontRangeHint_Japanese)
     dpg.bind_font(default_font)
 
-    # ノードエディター生成
+
     print('**** Create NodeEditor ********')
     menu_dict = OrderedDict({
-        'InputNode': 'input_node',
-        'ProcessNode': 'process_node',
-        'DeepLearningNode': 'deep_learning_node',
-        'AnalysisNode': 'analysis_node',
-        'DrawNode': 'draw_node',
-        'OtherNode': 'other_node',
-        'PreviewReleaseNode': 'preview_release_node'
+        'Input': 'input_node',
+        'VisionProcess': 'process_node',
+        'VisionModel': 'deep_learning_node',
+        'Analysis': 'analysis_node',
+        'Trigger': 'trigger_node',
+        'Router' : 'router_node',
+        'Action' : 'action_node',
+        'Record' : 'other_node',
+        'Tracking': 'preview_release_node',
+        'Fusion': 'draw_node',
+
     })
     # print
     node_editor = DpgNodeEditor(
@@ -189,7 +192,7 @@ def main():
         node_dir=current_path + '/node',
     )
 
-    # ビューポート表示
+
     dpg.show_viewport()
 
     # メインループ

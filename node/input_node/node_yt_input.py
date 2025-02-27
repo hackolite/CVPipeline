@@ -13,8 +13,8 @@ from node.node_abc import DpgNodeABC
 
 
 # 📌 Identifiant du live YouTube (à remplacer)
-VIDEO_ID = "elhJf3krR94"
-
+VIDEO_ID = "VR-x3HdhKLQ"
+#VIDEO_ID = "3LXQWU67Ufk"
 
 # ========================== #
 #    FONCTION UTILITAIRE     #
@@ -26,7 +26,7 @@ def get_light_live_stream_url(video_id):
     
     ydl_opts = {
         "quiet": True,
-        "format": "best[height<=360]",  # Limitation à 360p pour réduire la charge
+        "format": "best[height<=240]",  # Limitation à 360p pour réduire la charge
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -60,7 +60,7 @@ class Node(DpgNodeABC):
         # Initialisation du flux vidéo
         self.cap = get_light_live_stream_url(VIDEO_ID)
         self.last_frame_time = None
-        self.frame_time = 1.0 / 15  # 15 FPS pour une lecture fluide
+        self.frame_time = 1.0 / 24  # 15 FPS pour une lecture fluide
         self.small_window_w, self.small_window_h = 600, 400  # Taille de l'affichage
 
         # Image noire pour le démarrage
